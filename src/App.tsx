@@ -14,7 +14,7 @@ import { getAngularNews, getReactNews, getVueNews } from "./services/news";
 
 function App() {
   const [hits, setHits] = useState<HitModel[]>([]);
-  const [filter, setFilter] = useState<string>("");
+  const [filter, setFilter] = useState<string>(localStorage.getItem("filter") || "");
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -45,13 +45,14 @@ function App() {
 
   const handleFilter = (event: any) => {
     setFilter(event.target.value);
+    localStorage.setItem("filter", event.target.value);
   };
 
   return (
     <>
       <div className="App">
         <Header />
-        <div style={{ padding: "60px" }}>
+        <div style={{ padding: "60px", textAlign: 'center'}}>
           <FormControl>
             <InputLabel id="demo-simple-select-label">News</InputLabel>
             <Select
