@@ -78,7 +78,7 @@ function App() {
             </Select>
           </FormControl>
         </div>
-        <Container fixed>
+        <Container fixed style={{marginBottom: '20px'}}>
           <News hitsReact={validatedHits} loading={loading} />
         </Container>
       </div>
