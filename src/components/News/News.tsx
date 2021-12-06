@@ -14,7 +14,11 @@ function News(props: any) {
     return <div className="spinner"></div>;
   }
 
-  return <Hits hitsReact={hitsReact} />;
+  return (
+    <div className="container">
+      <Hits hitsReact={hitsReact} />
+    </div>
+  );
 }
 
 export default News;

@@ -1,3 +1,10 @@
+import {
+  InputLabel,
+  MenuItem,
+  Select,
+  FormControl,
+  Container,
+} from "@mui/material";
 import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
@@ -44,15 +51,35 @@ function App() {
     <>
       <div className="App">
         <Header />
-        <div style={{padding: '60px'}}>
-          <select className="menu" value={filter} onChange={handleFilter}>
-            <option style={{backgroundImage: `url(${'/public/img/angular-icon.png'})`}} value="">Select your news</option>
-            <option value="1">svgh Angular</option>
-            <option value="2">React</option>
-            <option value="3">Vue</option>
-          </select>
+        <div style={{ padding: "60px" }}>
+          <FormControl>
+            <InputLabel id="demo-simple-select-label">News</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              label="Age"
+              value={filter}
+              onChange={handleFilter}
+              autoWidth
+            >
+              <MenuItem disabled selected value="">
+                <em>Select your news</em>
+              </MenuItem>
+              <MenuItem value="1">
+                <em>Angular</em>
+              </MenuItem>
+              <MenuItem value="2">
+                <em>React</em>
+              </MenuItem>
+              <MenuItem value="3">
+                <em>Vue</em>
+              </MenuItem>
+            </Select>
+          </FormControl>
         </div>
-        <News hitsReact={validatedHits} loading={loading} />
+        <Container fixed>
+          <News hitsReact={validatedHits} loading={loading} />
+        </Container>
       </div>
     </>
   );
